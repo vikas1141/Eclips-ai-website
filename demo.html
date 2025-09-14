@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo - EclipseAI Platform Showcase</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r158/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>EclipseAI</h2>
+                <p class="tagline">Shaping Smarter Solutions.</p>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="#feature-showcase" class="nav-link">Features</a>
+                <a href="#how-it-works" class="nav-link">How It Works</a>
+                <a href="#comparison" class="nav-link">Comparison</a>
+                <a href="#use-cases" class="nav-link">Use Cases</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="login.html" class="nav-link">Login</a>
+                <a href="signup.html" class="nav-link nav-cta">Try Demo</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Mobile sidebar backdrop -->
+    <div class="nav-backdrop" id="nav-backdrop"></div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <canvas id="hero-canvas" class="hero-canvas"></canvas>
+        <canvas id="fluid-waves" class="fluid-waves-canvas"></canvas>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title" data-text="Experience EclipseAI: <span class='gradient-text'>Intelligent Automation</span> in Action">
+                </h1>
+                <p class="hero-subtitle">
+                    See how our platform transforms complex data into actionable insights through intelligent automation, predictive analytics, and real-time monitoring. Experience the power of next-generation AI solutions.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="scrollToSection('feature-showcase')">Explore Features</button>
+                    <button class="btn btn-secondary" onclick="scrollToSection('how-it-works')">See How It Works</button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">85%</span>
+                        <span class="stat-label">Faster Deployment</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">3x</span>
+                        <span class="stat-label">Better Accuracy</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">99.9%</span>
+                        <span class="stat-label">Uptime Guarantee</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What is EclipseAI Section -->
+    <section class="what-is-section" id="what-is">
+        <div class="container">
+            <div class="content-grid">
+                <div class="content-text">
+                    <h2 class="section-title">What is EclipseAI?</h2>
+                    <p class="section-subtitle">
+                        EclipseAI is a comprehensive AI platform that transforms how businesses process, analyze, and act on their data. We solve the complexity of implementing AI at scale while maintaining security, compliance, and performance.
+                    </p>
+                    
+                    <div class="problem-solution">
+                        <div class="problem">
+                            <h3>Problems We Solve</h3>
+                            <ul>
+                                <li><i class="fas fa-times-circle"></i> Fragmented AI tools that don't work together</li>
+                                <li><i class="fas fa-times-circle"></i> Months of setup and integration time</li>
+                                <li><i class="fas fa-times-circle"></i> Expensive AI expertise requirements</li>
+                                <li><i class="fas fa-times-circle"></i> Security and compliance concerns</li>
+                                <li><i class="fas fa-times-circle"></i> Scaling challenges and vendor lock-in</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="solution">
+                            <h3>Our Solution</h3>
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> Unified platform with seamless integration</li>
+                                <li><i class="fas fa-check-circle"></i> Deploy in hours, not months</li>
+                                <li><i class="fas fa-check-circle"></i> No-code/low-code interface</li>
+                                <li><i class="fas fa-check-circle"></i> Enterprise-grade security built-in</li>
+                                <li><i class="fas fa-check-circle"></i> Multi-cloud flexibility and auto-scaling</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="content-visual">
+                    <div class="demo-mockup">
+                        <div class="mockup-header">
+                            <div class="mockup-dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <span class="mockup-title">EclipseAI Dashboard</span>
+                        </div>
+                        <div class="mockup-content">
+                            <div class="dashboard-section">
+                                <h4>Real-time Analytics</h4>
+                                <div class="chart-placeholder">
+                                    <div class="chart-bar" style="height: 60%"></div>
+                                    <div class="chart-bar" style="height: 80%"></div>
+                                    <div class="chart-bar" style="height: 45%"></div>
+                                    <div class="chart-bar" style="height: 90%"></div>
+                                    <div class="chart-bar" style="height: 70%"></div>
+                                </div>
+                            </div>
+                            <div class="dashboard-section">
+                                <h4>Active Workflows</h4>
+                                <div class="workflow-list">
+                                    <div class="workflow-item">
+                                        <i class="fas fa-play-circle"></i>
+                                        <span>Data Processing Pipeline</span>
+                                    </div>
+                                    <div class="workflow-item">
+                                        <i class="fas fa-play-circle"></i>
+                                        <span>Customer Analytics</span>
+                                    </div>
+                                    <div class="workflow-item">
+                                        <i class="fas fa-play-circle"></i>
+                                        <span>Predictive Modeling</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Showcase -->
+    <section class="feature-showcase" id="feature-showcase">
+        <div class="container">
+            <h2 class="section-title">Platform Capabilities</h2>
+            <p class="section-subtitle">
+                Discover the comprehensive suite of AI-powered tools that make EclipseAI the preferred choice for modern enterprises.
+            </p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Intelligent Automation</h3>
+                    <p>Automatically process complex workflows with self-learning algorithms that adapt to your business needs and optimize performance over time.</p>
+                    <div class="feature-highlights">
+                        <span class="highlight">Auto-scaling</span>
+                        <span class="highlight">Smart routing</span>
+                        <span class="highlight">Self-optimization</span>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Predictive Analytics</h3>
+                    <p>Forecast trends, identify patterns, and make data-driven decisions with advanced machine learning models that learn from your data.</p>
+                    <div class="feature-highlights">
+                        <span class="highlight">Trend analysis</span>
+                        <span class="highlight">Anomaly detection</span>
+                        <span class="highlight">Risk assessment</span>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Real-time Monitoring</h3>
+                    <p>Monitor system performance, track metrics, and receive instant alerts with comprehensive dashboards and intelligent notifications.</p>
+                    <div class="feature-highlights">
+                        <span class="highlight">Live dashboards</span>
+                        <span class="highlight">Smart alerts</span>
+                        <span class="highlight">Performance metrics</span>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Enterprise Security</h3>
+                    <p>Protect your data with enterprise-grade security features including encryption, access controls, and compliance monitoring.</p>
+                    <div class="feature-highlights">
+                        <span class="highlight">End-to-end encryption</span>
+                        <span class="highlight">Role-based access</span>
+                        <span class="highlight">Compliance ready</span>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Flexible Deployment</h3>
+                    <p>Deploy anywhere with support for cloud, on-premises, and hybrid environments. Choose the deployment model that fits your needs.</p>
+                    <div class="feature-highlights">
+                        <span class="highlight">Multi-cloud support</span>
+                        <span class="highlight">Hybrid deployment</span>
+                        <span class="highlight">Auto-scaling</span>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <h3>Easy Integration</h3>
+                    <p>Seamlessly integrate with existing systems through our comprehensive API library and pre-built connectors for popular platforms.</p>
+                    <div class="feature-highlights">
+                        <span class="highlight">REST APIs</span>
+                        <span class="highlight">Pre-built connectors</span>
+                        <span class="highlight">Custom integrations</span>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-universal-access"></i>
+                    </div>
+                    <h3>Accessibility First</h3>
+                    <p>Built with accessibility in mind, ensuring your team can use our platform regardless of their abilities or preferred tools.</p>
+                    <div class="feature-highlights">
+                        <span class="highlight">WCAG compliant</span>
+                        <span class="highlight">Screen reader support</span>
+                        <span class="highlight">Keyboard navigation</span>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>No-Code/Low-Code</h3>
+                    <p>Build and deploy AI solutions without extensive coding knowledge. Our visual interface makes AI accessible to everyone.</p>
+                    <div class="feature-highlights">
+                        <span class="highlight">Visual workflows</span>
+                        <span class="highlight">Drag-and-drop</span>
+                        <span class="highlight">Pre-built templates</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How EclipseAI Works</h2>
+            <p class="section-subtitle">
+                From data ingestion to actionable insights, see how EclipseAI transforms your business processes in just a few simple steps.
+            </p>
+            
+            <div class="workflow-container">
+                <div class="workflow-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Connect Your Data</h3>
+                        <p>Integrate with your existing systems using our 200+ pre-built connectors or custom APIs. Support for databases, cloud storage, APIs, and real-time streams.</p>
+                        <div class="step-visual">
+                            <div class="data-sources">
+                                <div class="source-item">
+                                    <i class="fas fa-database"></i>
+                                    <span>Databases</span>
+                                </div>
+                                <div class="source-item">
+                                    <i class="fas fa-cloud"></i>
+                                    <span>Cloud Storage</span>
+                                </div>
+                                <div class="source-item">
+                                    <i class="fas fa-plug"></i>
+                                    <span>APIs</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="workflow-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>AI Processing</h3>
+                        <p>Our intelligent engine automatically cleans, structures, and analyzes your data using state-of-the-art machine learning algorithms.</p>
+                        <div class="step-visual">
+                            <div class="processing-flow">
+                                <div class="flow-item">
+                                    <i class="fas fa-broom"></i>
+                                    <span>Clean</span>
+                                </div>
+                                <div class="flow-arrow">→</div>
+                                <div class="flow-item">
+                                    <i class="fas fa-sitemap"></i>
+                                    <span>Structure</span>
+                                </div>
+                                <div class="flow-arrow">→</div>
+                                <div class="flow-item">
+                                    <i class="fas fa-brain"></i>
+                                    <span>Analyze</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="workflow-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Generate Insights</h3>
+                        <p>Discover patterns, predict trends, and identify opportunities with our advanced analytics and visualization tools.</p>
+                        <div class="step-visual">
+                            <div class="insights-grid">
+                                <div class="insight-item">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>Trends</span>
+                                </div>
+                                <div class="insight-item">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <span>Anomalies</span>
+                                </div>
+                                <div class="insight-item">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <span>Opportunities</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="workflow-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Take Action</h3>
+                        <p>Automate workflows, trigger alerts, and generate reports that drive real business value and operational efficiency.</p>
+                        <div class="step-visual">
+                            <div class="action-items">
+                                <div class="action-item">
+                                    <i class="fas fa-play"></i>
+                                    <span>Automate</span>
+                                </div>
+                                <div class="action-item">
+                                    <i class="fas fa-bell"></i>
+                                    <span>Alert</span>
+                                </div>
+                                <div class="action-item">
+                                    <i class="fas fa-file-alt"></i>
+                                    <span>Report</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Demo Section -->
+    <section class="interactive-demo" id="interactive-demo">
+        <div class="container">
+            <h2 class="section-title">Try It Yourself</h2>
+            <p class="section-subtitle">
+                Experience EclipseAI with our interactive demo. See how easy it is to set up a complete data processing workflow.
+            </p>
+            
+            <div class="demo-container">
+                <div class="demo-steps">
+                    <div class="demo-step active" data-step="1">
+                        <div class="step-indicator">
+                            <span class="step-number">1</span>
+                        </div>
+                        <h3>Choose Your Data Source</h3>
+                        <p>Select from our pre-built connectors</p>
+                    </div>
+                    
+                    <div class="demo-step" data-step="2">
+                        <div class="step-indicator">
+                            <span class="step-number">2</span>
+                        </div>
+                        <h3>Configure Processing</h3>
+                        <p>Set up your AI processing pipeline</p>
+                    </div>
+                    
+                    <div class="demo-step" data-step="3">
+                        <div class="step-indicator">
+                            <span class="step-number">3</span>
+                        </div>
+                        <h3>Deploy & Monitor</h3>
+                        <p>Launch and track your solution</p>
+                    </div>
+                </div>
+                
+                <div class="demo-panel">
+                    <div class="demo-content" id="demoContent">
+                        <div class="demo-screen">
+                            <div class="screen-header">
+                                <h4>EclipseAI Workflow Builder</h4>
+                            </div>
+                            <div class="screen-body">
+                                <div class="data-source-selector">
+                                    <h5>Select Data Source:</h5>
+                                    <div class="source-options">
+                                        <div class="source-option" data-source="database">
+                                            <i class="fas fa-database"></i>
+                                            <span>Database</span>
+                                        </div>
+                                        <div class="source-option" data-source="api">
+                                            <i class="fas fa-plug"></i>
+                                            <span>API</span>
+                                        </div>
+                                        <div class="source-option" data-source="file">
+                                            <i class="fas fa-file"></i>
+                                            <span>File Upload</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="demo-actions">
+                        <button class="btn btn-secondary" id="prevStep" disabled>Previous</button>
+                        <button class="btn btn-primary" id="nextStep">Next Step</button>
+                        <a href="login.html" class="btn btn-primary" id="tryLiveDemo">Try Live Demo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section class="use-cases" id="use-cases">
+        <div class="container">
+            <h2 class="section-title">Real-World Applications</h2>
+            <p class="section-subtitle">
+                See how industry leaders are using EclipseAI to transform their operations and drive growth.
+            </p>
+            
+            <div class="use-cases-grid">
+                <div class="use-case-card">
+                    <div class="case-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>E-commerce Analytics</h3>
+                    <p>Predict customer behavior, optimize inventory, and personalize shopping experiences with real-time data processing.</p>
+                    <div class="case-metrics">
+                        <div class="metric">
+                            <span class="metric-value">+40%</span>
+                            <span class="metric-label">Conversion Rate</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">-25%</span>
+                            <span class="metric-label">Inventory Costs</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="use-case-card">
+                    <div class="case-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Healthcare Monitoring</h3>
+                    <p>Monitor patient data, predict health risks, and automate treatment recommendations while maintaining HIPAA compliance.</p>
+                    <div class="case-metrics">
+                        <div class="metric">
+                            <span class="metric-value">-30%</span>
+                            <span class="metric-label">Readmission Rate</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">+60%</span>
+                            <span class="metric-label">Early Detection</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="use-case-card">
+                    <div class="case-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3>Manufacturing Optimization</h3>
+                    <p>Predict equipment failures, optimize production schedules, and reduce downtime with IoT data analysis.</p>
+                    <div class="case-metrics">
+                        <div class="metric">
+                            <span class="metric-value">+35%</span>
+                            <span class="metric-label">Efficiency</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">-50%</span>
+                            <span class="metric-label">Downtime</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="use-case-card">
+                    <div class="case-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3>Financial Services</h3>
+                    <p>Detect fraud, assess credit risk, and automate compliance reporting with real-time transaction analysis.</p>
+                    <div class="case-metrics">
+                        <div class="metric">
+                            <span class="metric-value">+90%</span>
+                            <span class="metric-label">Fraud Detection</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">-70%</span>
+                            <span class="metric-label">Processing Time</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="comparison" id="comparison">
+        <div class="container">
+            <h2 class="section-title">EclipseAI vs Traditional Solutions</h2>
+            <p class="section-subtitle">
+                See how EclipseAI outperforms traditional AI platforms across key metrics and capabilities.
+            </p>
+            
+            <div class="comparison-container">
+                <div class="comparison-table">
+                    <div class="comparison-header">
+                        <div class="feature-column">Features</div>
+                        <div class="platform-column eclipse">EclipseAI</div>
+                        <div class="platform-column traditional">Traditional Solutions</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="feature-name">Time to Deploy</div>
+                        <div class="feature-value eclipse">✓ Hours</div>
+                        <div class="feature-value traditional">Weeks to Months</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="feature-name">Auto-scaling</div>
+                        <div class="feature-value eclipse">✓ Native</div>
+                        <div class="feature-value traditional">Manual Setup</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="feature-name">Multi-cloud Support</div>
+                        <div class="feature-value eclipse">✓ All Platforms</div>
+                        <div class="feature-value traditional">Limited</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="feature-name">Real-time Processing</div>
+                        <div class="feature-value eclipse">✓ Built-in</div>
+                        <div class="feature-value traditional">Additional Setup</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="feature-name">Cost Optimization</div>
+                        <div class="feature-value eclipse">✓ Automatic</div>
+                        <div class="feature-value traditional">Manual Monitoring</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="feature-name">Security & Compliance</div>
+                        <div class="feature-value eclipse">✓ Enterprise-grade</div>
+                        <div class="feature-value traditional">Basic</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="feature-name">Integration APIs</div>
+                        <div class="feature-value eclipse">✓ Comprehensive</div>
+                        <div class="feature-value traditional">Limited</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="feature-name">Support & Training</div>
+                        <div class="feature-value eclipse">✓ 24/7 Premium</div>
+                        <div class="feature-value traditional">Standard Hours</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Ready to Get Started?</h2>
+            <p class="section-subtitle">
+                Experience the power of EclipseAI with a personalized demo tailored to your business needs.
+            </p>
+            
+            <div class="contact-options">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <h3>Schedule a Demo</h3>
+                    <p>Book a personalized demo to see EclipseAI in action with your specific use cases.</p>
+                    <a href="login.html" class="btn btn-primary">Book Demo</a>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Talk to Sales</h3>
+                    <p>Speak with our AI experts to discuss your requirements and find the perfect solution.</p>
+                    <a href="login.html" class="btn btn-secondary">Contact Sales</a>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Start Free Trial</h3>
+                    <p>Try EclipseAI risk-free with our 30-day trial and see the results for yourself.</p>
+                    <a href="login.html" class="btn btn-primary">Start Trial</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>EclipseAI</h3>
+                    <p>Shaping smarter solutions for tomorrow's challenges.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#feature-showcase">Features</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#use-cases">Use Cases</a></li>
+                        <li><a href="#comparison">Comparison</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="index.html">About</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Status</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 EclipseAI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Demo page specific functionality
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                const offsetTop = element.offsetTop - 80;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Interactive demo functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const demoSteps = document.querySelectorAll('.demo-step');
+            const prevBtn = document.getElementById('prevStep');
+            const nextBtn = document.getElementById('nextStep');
+            const demoContent = document.getElementById('demoContent');
+            let currentStep = 1;
+
+            function updateDemoStep(step) {
+                demoSteps.forEach((stepEl, index) => {
+                    if (index + 1 <= step) {
+                        stepEl.classList.add('active');
+                    } else {
+                        stepEl.classList.remove('active');
+                    }
+                });
+
+                prevBtn.disabled = step === 1;
+                nextBtn.style.display = step === 3 ? 'none' : 'inline-block';
+                document.getElementById('tryLiveDemo').style.display = step === 3 ? 'inline-block' : 'none';
+
+                // Update demo content based on step
+                updateDemoContent(step);
+            }
+
+            function updateDemoContent(step) {
+                const content = {
+                    1: `
+                        <div class="demo-screen">
+                            <div class="screen-header">
+                                <h4>EclipseAI Workflow Builder</h4>
+                            </div>
+                            <div class="screen-body">
+                                <div class="data-source-selector">
+                                    <h5>Select Data Source:</h5>
+                                    <div class="source-options">
+                                        <div class="source-option" data-source="database">
+                                            <i class="fas fa-database"></i>
+                                            <span>Database</span>
+                                        </div>
+                                        <div class="source-option" data-source="api">
+                                            <i class="fas fa-plug"></i>
+                                            <span>API</span>
+                                        </div>
+                                        <div class="source-option" data-source="file">
+                                            <i class="fas fa-file"></i>
+                                            <span>File Upload</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `,
+                    2: `
+                        <div class="demo-screen">
+                            <div class="screen-header">
+                                <h4>Configure AI Processing</h4>
+                            </div>
+                            <div class="screen-body">
+                                <div class="processing-config">
+                                    <h5>Processing Options:</h5>
+                                    <div class="config-options">
+                                        <div class="config-item">
+                                            <input type="checkbox" checked>
+                                            <label>Data Cleaning</label>
+                                        </div>
+                                        <div class="config-item">
+                                            <input type="checkbox" checked>
+                                            <label>Pattern Recognition</label>
+                                        </div>
+                                        <div class="config-item">
+                                            <input type="checkbox" checked>
+                                            <label>Predictive Analytics</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `,
+                    3: `
+                        <div class="demo-screen">
+                            <div class="screen-header">
+                                <h4>Deploy & Monitor</h4>
+                            </div>
+                            <div class="screen-body">
+                                <div class="deployment-status">
+                                    <h5>Deployment Status:</h5>
+                                    <div class="status-indicators">
+                                        <div class="status-item success">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>Connected to Data Source</span>
+                                        </div>
+                                        <div class="status-item success">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>AI Processing Active</span>
+                                        </div>
+                                        <div class="status-item success">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>Real-time Monitoring</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `
+                };
+
+                demoContent.innerHTML = content[step] || content[1];
+            }
+
+            nextBtn.addEventListener('click', function() {
+                if (currentStep < 3) {
+                    currentStep++;
+                    updateDemoStep(currentStep);
+                }
+            });
+
+            prevBtn.addEventListener('click', function() {
+                if (currentStep > 1) {
+                    currentStep--;
+                    updateDemoStep(currentStep);
+                }
+            });
+
+            // Initialize demo
+            updateDemoStep(1);
+
+            // Add demo-specific animations
+            const workflowSteps = document.querySelectorAll('.workflow-step');
+            const observerOptions = {
+                threshold: 0.3,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                    }
+                });
+            }, observerOptions);
+
+            workflowSteps.forEach(step => {
+                observer.observe(step);
+            });
+
+            // Add CSS for demo animations
+            const demoStyle = document.createElement('style');
+            demoStyle.textContent = `
+                .workflow-step {
+                    opacity: 0;
+                    transform: translateY(50px);
+                    transition: all 0.8s ease;
+                }
+                
+                .workflow-step.animate-in {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+                
+                .feature-card:hover .feature-icon {
+                    transform: scale(1.1) rotate(5deg);
+                }
+                
+                .demo-step {
+                    transition: all 0.3s ease;
+                }
+                
+                .demo-step.active .step-indicator {
+                    background: var(--accent-blue-bright);
+                    color: white;
+                }
+                
+                .source-option, .config-item, .status-item {
+                    transition: all 0.3s ease;
+                }
+                
+                .source-option:hover, .config-item:hover {
+                    transform: translateY(-2px);
+                    background: var(--bg-glass-hover);
+                }
+            `;
+            document.head.appendChild(demoStyle);
+        });
+    </script>
+</body>
+</html>

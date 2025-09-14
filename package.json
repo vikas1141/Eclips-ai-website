@@ -1,0 +1,46 @@
+{
+  "name": "eclipse-ai-website",
+  "version": "1.0.0",
+  "description": "EclipseAI - A modern, professional website showcasing intelligent AI solutions that shape smarter business outcomes",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx live-server --port=3000",
+    "build": "echo 'No build process needed for static site'",
+    "lint": "echo 'Add linting tools as needed'",
+    "test": "echo 'Add testing framework as needed'"
+  },
+  "keywords": [
+    "website",
+    "ai",
+    "enterprise",
+    "modern",
+    "responsive",
+    "vanilla-js",
+    "html5",
+    "css3"
+  ],
+  "author": "EclipseAI Team",
+  "license": "MIT",
+  "dependencies": {
+    "three": "^0.158.0",
+    "gsap": "^3.12.2"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "serve": "^14.2.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/eclipse-ai-website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/eclipse-ai-website/issues"
+  },
+  "homepage": "https://github.com/your-username/eclipse-ai-website#readme",
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

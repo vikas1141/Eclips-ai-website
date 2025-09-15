@@ -8,7 +8,11 @@
     "dev": "npx live-server --port=3000",
     "build": "echo 'No build process needed for static site'",
     "lint": "echo 'Add linting tools as needed'",
-    "test": "echo 'Add testing framework as needed'"
+    "test": "echo 'Add testing framework as needed'",
+    "server": "cd server && npm start",
+    "server:dev": "cd server && npm run dev",
+    "deploy": "vercel --prod",
+    "deploy:preview": "vercel"
   },
   "keywords": [
     "website",

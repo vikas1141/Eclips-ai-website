@@ -9,12 +9,11 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// JWT Secret (in production, use environment variables)
-const JWT_SECRET = 'your-secret-key-change-in-production';
-
-// Replace with your cluster's string
-const uri = 'mongodb+srv://sagirajusaivikasvarma_db_user:kOecLqoXRffPVsCY@cluster1.ye6tavk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster1';
-const client = new MongoClient(uri);
+// Environment variables (for production deployment)
+const PORT = process.env.PORT || 3000;
+const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-in-production';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://sagirajusaivikasvarma_db_user:kOecLqoXRffPVsCY@cluster1.ye6tavk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster1';
+const client = new MongoClient(MONGODB_URI);
 
 let usersCollection;
 
@@ -184,8 +183,8 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', message: 'EclipseAI API is running' });
 });
 
-app.listen(4000, () => {
-  console.log('🚀 EclipseAI API server running on port 4000');
+app.listen(PORT, () => {
+  console.log(`🚀 EclipseAI API server running on port ${PORT}`);
   console.log('📁 Serving static files from parent directory');
   console.log('🔗 API endpoints:');
   console.log('   POST /api/signup - User registration');

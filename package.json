@@ -28,7 +28,10 @@
   "license": "MIT",
   "dependencies": {
     "three": "^0.158.0",
-    "gsap": "^3.12.2"
+    "gsap": "^3.12.2",
+    "bcryptjs": "^3.0.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.3.0"
   },
   "devDependencies": {
     "live-server": "^1.2.2",

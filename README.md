@@ -120,12 +120,23 @@ eclipse-ai-website/
    npm install
    ```
 
-3. Start development server:
+3. Start the backend server:
+   ```bash
+   # Option 1: Use the batch file (Windows)
+   start-server.bat
+   
+   # Option 2: Manual start
+   cd server
+   npm install
+   npm start
+   ```
+
+4. Start the frontend development server:
    ```bash
    npm run dev
    ```
 
-4. Open your browser and navigate to `http://localhost:3000`
+5. Open your browser and navigate to `http://localhost:3000`
 
 ### Alternative Setup
 For a simple static server:
@@ -135,6 +146,38 @@ npm run start
 
 ### Quick Start (No Installation)
 Simply open `index.html` in a modern web browser. Note: Some advanced features may not work without a local server due to CORS restrictions.
+
+## 🔧 Backend Server Setup
+
+The EclipseAI platform includes a Node.js backend server for user authentication and data management.
+
+### Server Features
+- **User Registration**: Secure account creation with password hashing
+- **User Authentication**: JWT-based login system
+- **MongoDB Integration**: Cloud database for user data storage
+- **CORS Support**: Cross-origin requests enabled
+- **API Endpoints**: RESTful API for frontend integration
+
+### API Endpoints
+- `POST /api/signup` - User registration
+- `POST /api/login` - User authentication  
+- `GET /api/profile` - Get user profile (requires token)
+- `GET /api/health` - Health check
+
+### Server Configuration
+- **Port**: 4000
+- **Database**: MongoDB Atlas
+- **Authentication**: JWT tokens
+- **Password Security**: bcrypt hashing
+
+### Troubleshooting
+If you encounter network errors when creating accounts or signing in:
+
+1. **Check server status**: Visit `http://localhost:4000/api/health`
+2. **Start the server**: Run `start-server.bat` or `npm start` in the server folder
+3. **Test API**: Use `test-api.html` to verify all endpoints are working
+
+For detailed server setup instructions, see [SERVER_SETUP.md](SERVER_SETUP.md).
 
 ## 📱 Responsive Breakpoints
 

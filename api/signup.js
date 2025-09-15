@@ -2,9 +2,8 @@
 const bcrypt = require('bcryptjs');
 const { MongoClient } = require('mongodb');
 
-// Fix the MongoDB URI to include SSL parameters
-const baseUri = process.env.MONGODB_URI || 'mongodb+srv://sagirajusaivikasvarma_db_user:kOecLqoXRffPVsCY@cluster1.ye6tavk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster1';
-const MONGODB_URI = baseUri.includes('tlsAllowInvalidCertificates') ? baseUri : baseUri + '&ssl=true&tlsAllowInvalidCertificates=true';
+// Use a connection string that works with Vercel serverless
+const MONGODB_URI = 'mongodb+srv://sagirajusaivikasvarma_db_user:kOecLqoXRffPVsCY@cluster1.ye6tavk.mongodb.net/eclipse_ai?retryWrites=true&w=majority';
 
 let cachedClient = null;
 let cachedDb = null;
@@ -17,14 +16,8 @@ async function connectToDatabase() {
   const client = new MongoClient(MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    serverSelectionTimeoutMS: 10000,
-    connectTimeoutMS: 10000,
-    socketTimeoutMS: 10000,
-    maxPoolSize: 1,
-    minPoolSize: 1,
-    maxIdleTimeMS: 10000,
-    retryWrites: true,
-    retryReads: true
+    serverSelectionTimeoutMS: 15000,
+    connectTimeoutMS: 15000
   });
   await client.connect();
   const db = client.db('eclipse_ai');

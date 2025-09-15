@@ -1,0 +1,11 @@
+{
+  "name": "eclipse-ai-api",
+  "version": "1.0.0",
+  "description": "EclipseAI API endpoints for Vercel",
+  "main": "index.js",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.3.0"
+  }
+}

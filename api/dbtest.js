@@ -1,7 +1,7 @@
 // api/dbtest.js - Database connection test
 const { MongoClient } = require('mongodb');
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://sagirajusaivikasvarma_db_user:kOecLqoXRffPVsCY@cluster1.ye6tavk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster1';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://sagirajusaivikasvarma_db_user:kOecLqoXRffPVsCY@cluster1.ye6tavk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster1&ssl=true&tlsAllowInvalidCertificates=true';
 
 module.exports = async (req, res) => {
   // Enable CORS
@@ -22,7 +22,13 @@ module.exports = async (req, res) => {
     console.log('Testing MongoDB connection...');
     console.log('MONGODB_URI exists:', !!process.env.MONGODB_URI);
     
-    const client = new MongoClient(MONGODB_URI);
+    const client = new MongoClient(MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      tls: true,
+      tlsAllowInvalidCertificates: true,
+      serverSelectionTimeoutMS: 5000
+    });
     await client.connect();
     console.log('Connected to MongoDB');
     

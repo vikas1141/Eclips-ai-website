@@ -183,12 +183,18 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', message: 'EclipseAI API is running' });
 });
 
-app.listen(PORT, () => {
-  console.log(`🚀 EclipseAI API server running on port ${PORT}`);
-  console.log('📁 Serving static files from parent directory');
-  console.log('🔗 API endpoints:');
-  console.log('   POST /api/signup - User registration');
-  console.log('   POST /api/login - User authentication');
-  console.log('   GET  /api/profile - Get user profile (requires token)');
-  console.log('   GET  /api/health - Health check');
-});
+// Export the Express app for Vercel
+module.exports = app;
+
+// Only start listening if not in Vercel environment
+if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`🚀 EclipseAI API server running on port ${PORT}`);
+    console.log('📁 Serving static files from parent directory');
+    console.log('🔗 API endpoints:');
+    console.log('   POST /api/signup - User registration');
+    console.log('   POST /api/login - User authentication');
+    console.log('   GET  /api/profile - Get user profile (requires token)');
+    console.log('   GET  /api/health - Health check');
+  });
+}

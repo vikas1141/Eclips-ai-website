@@ -522,7 +522,11 @@
                         
                         // Show specific error message based on error type
                         if (error.name === 'TypeError' && error.message.includes('fetch')) {
-                            showErrorMessage('Server is not running. Please start the server by running "start-server.bat" or "npm start" in the server folder.');
+                            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                                showErrorMessage('Server is not running. Please start the server by running "start-server.bat" or "npm start" in the server folder.');
+                            } else {
+                                showErrorMessage('API connection failed. Please check if the server is properly deployed.');
+                            }
                         } else {
                             showErrorMessage('Network error. Please check your connection and try again.');
                         }

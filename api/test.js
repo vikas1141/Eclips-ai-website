@@ -14,11 +14,22 @@ module.exports = async (req, res) => {
     return;
   }
 
-  res.json({ 
-    status: 'OK', 
-    message: 'API is working!',
-    timestamp: new Date().toISOString(),
-    method: req.method,
-    url: req.url
-  });
+  try {
+    res.json({ 
+      status: 'OK', 
+      message: 'API is working!',
+      timestamp: new Date().toISOString(),
+      method: req.method,
+      url: req.url,
+      env: {
+        hasMongoUri: !!process.env.MONGODB_URI,
+        hasJwtSecret: !!process.env.JWT_SECRET
+      }
+    });
+  } catch (error) {
+    res.status(500).json({ 
+      error: 'Test endpoint error',
+      message: error.message 
+    });
+  }
 };

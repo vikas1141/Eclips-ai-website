@@ -19,19 +19,29 @@ module.exports = async (req, res) => {
   }
 
   try {
+    console.log('Testing MongoDB connection...');
+    console.log('MONGODB_URI exists:', !!process.env.MONGODB_URI);
+    
     const client = new MongoClient(MONGODB_URI);
     await client.connect();
+    console.log('Connected to MongoDB');
     
     const db = client.db('eclipse_ai');
     const collections = await db.listCollections().toArray();
+    console.log('Collections found:', collections.length);
     
     await client.close();
+    console.log('Connection closed');
     
     res.json({ 
       status: 'OK', 
       message: 'Database connection successful!',
       collections: collections.map(col => col.name),
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
+      env: {
+        hasMongoUri: !!process.env.MONGODB_URI,
+        uriLength: MONGODB_URI.length
+      }
     });
     
   } catch (error) {
@@ -40,7 +50,11 @@ module.exports = async (req, res) => {
       status: 'ERROR', 
       message: 'Database connection failed',
       error: error.message,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
+      env: {
+        hasMongoUri: !!process.env.MONGODB_URI,
+        uriLength: MONGODB_URI.length
+      }
     });
   }
 };

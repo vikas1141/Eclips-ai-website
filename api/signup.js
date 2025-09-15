@@ -44,7 +44,6 @@ module.exports = async (req, res) => {
   try {
     const { firstName, lastName, email, company, password, agreeTerms, newsletter } = req.body;
     
-    // Validate required fields
     if (!firstName || !lastName || !email || !password) {
       return res.status(400).json({ error: 'All required fields must be provided' });
     }
@@ -52,16 +51,13 @@ module.exports = async (req, res) => {
     const { db } = await connectToDatabase();
     const usersCollection = db.collection('users');
     
-    // Check if user already exists
     const userExists = await usersCollection.findOne({ email });
     if (userExists) {
       return res.status(400).json({ error: 'Email already registered' });
     }
     
-    // Hash password
     const hash = await bcrypt.hash(password, 10);
     
-    // Create user object
     const user = {
       firstName,
       lastName,

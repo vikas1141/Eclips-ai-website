@@ -46,7 +46,6 @@ module.exports = async (req, res) => {
   try {
     const { email, password } = req.body;
     
-    // Validate required fields
     if (!email || !password) {
       return res.status(400).json({ error: 'Email and password are required' });
     }
@@ -54,25 +53,21 @@ module.exports = async (req, res) => {
     const { db } = await connectToDatabase();
     const usersCollection = db.collection('users');
     
-    // Find user by email
     const user = await usersCollection.findOne({ email });
     if (!user) {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
     
-    // Check password
     const isValidPassword = await bcrypt.compare(password, user.password);
     if (!isValidPassword) {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
     
-    // Update last login
     await usersCollection.updateOne(
       { email }, 
       { $set: { lastLogin: new Date() } }
     );
     
-    // Generate JWT token
     const token = jwt.sign(
       { 
         userId: user._id, 
